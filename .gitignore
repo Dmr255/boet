@@ -1,0 +1,6 @@
+node_modules/
+temp_downloads/
+session/
+.env
+core
+session_auth/
