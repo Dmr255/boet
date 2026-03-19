@@ -14,6 +14,7 @@ import pino from 'pino';
 import { handler } from './handler.js';
 import qrcode from 'qrcode-terminal';
 import { rmSync } from 'fs';
+import { execSync } from 'child_process';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -68,24 +69,24 @@ async function connectToWhatsApp() {
         const { connection, lastDisconnect, qr } = update;
         
         if (qr) {
-            // Clear any existing QR refresh interval
+            // Clear any existing QR refresh interval (old expired codes)
             if (qrRefreshInterval) clearInterval(qrRefreshInterval);
             
-            // Display QR immediately
-            const displayQR = () => {
-                console.clear();
-                console.log('\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
-                console.log('📲 SCAN QR CODE dengan WhatsApp (Berlaku 40 detik)');
-                console.log(`⏰ Generated: ${new Date().toLocaleTimeString('id-ID')}`);
-                console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n');
-                qrcode.generate(qr, { small: true });
-                console.log('\n✨ QR code valid 40 detik - ada cukup waktu untuk scan!\n');
-            };
+            // Display QR ONCE - don't keep showing expired code
+            console.clear();
+            console.log('\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
+            console.log('📲 SCAN QR CODE dengan WhatsApp (Berlaku 40 detik)');
+            console.log(`⏰ Generated: ${new Date().toLocaleTimeString('id-ID')}`);
+            console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n');
+            qrcode.generate(qr, { small: true });
+            console.log('\n✨ QR code valid 40 detik - jangan refresh manual!\n');
             
-            displayQR();
-            
-            // Auto-refresh QR setiap 40 detik untuk member scanning
-            qrRefreshInterval = setInterval(displayQR, 40000);
+            // Clear QR after 40 seconds (Baileys akan send QR baru jika belum scan)
+            if (qrRefreshInterval) clearInterval(qrRefreshInterval);
+            qrRefreshInterval = setTimeout(() => {
+                console.log('⏰ QR code expired - waiting for new one...');
+                qrRefreshInterval = null;
+            }, 40000);
         }
         
         if (connection === 'close') {
@@ -95,33 +96,12 @@ async function connectToWhatsApp() {
             const reason = lastDisconnect?.error?.output?.payload?.message || lastDisconnect?.error?.message || 'Unknown';
             console.log('❌ Connection closed:', reason);
 
-            const isConflict = String(reason).toLowerCase().includes('conflict') ||
-                               lastDisconnect?.error?.output?.statusCode === DisconnectReason.connectionReplaced;
-
             const shouldReconnect = (lastDisconnect?.error instanceof Boom) &&
                                    lastDisconnect.error.output.statusCode !== DisconnectReason.loggedOut;
 
-            if (isConflict) {
-                conflictCount = (conflictCount || 0) + 1;
-                console.log(`⚠️ Conflict #${conflictCount} - Multiple sessions active. Clearing and retrying...`);
-                
-                // Clear session after 2 seconds to ensure old connections are fully closed
-                setTimeout(() => {
-                    try {
-                        rmSync(join(__dirname, 'session_auth'), { recursive: true, force: true });
-                        console.log('✅ Session cleared. Restarting connection...');
-                        setTimeout(connectToWhatsApp, 2000);
-                    } catch (e) {
-                        console.error('Failed to clear session:', e.message);
-                        setTimeout(connectToWhatsApp, 5000);
-                    }
-                }, 2000);
-                return;
-            }
-
             if (shouldReconnect) {
-                console.log('🔄 Reconnecting in 5s...');
-                setTimeout(connectToWhatsApp, 5000);
+                console.log('🔄 Reconnecting in 3s...');
+                setTimeout(connectToWhatsApp, 3000);
             } else {
                 console.log('🚫 Logged out! Hapus folder session_auth dan restart.');
                 console.log('   rm -rf session_auth/ && node index.js');
