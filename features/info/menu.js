@@ -78,71 +78,80 @@ export default {
 ┃ ╭━━━━━━━━━━━━━━━━━━━━╮
 ┃ ┃  📥 *D O W N L O A D E R*  ┃
 ┃ ╰━━━━━━━━━━━━━━━━━━━━╯
-┃ │ 1.  *.ig* <link>
-┃ │    ↳ Instagram Video/Reel/Post
-┃ │ 2.  *.ig2* <link>
-┃ │    ↳ Instagram Versi Backup
-┃ │ 3.  *.tt* <link>
-┃ │    ↳ TikTok No Watermark
-┃ │ 4.  *.mediafire* / *.mf* <link>
-┃ │    ↳ MediaFire Downloader
-┃ │ 5.  *.mp3* <link>
-┃ │    ↳ YouTube to MP3
-┃ │ 6.  *.flac* <judul>
-┃ │    ↳ Download Lagu Hi-Res FLAC
+┃ │ *.ig* / *.ig2* <link>
+┃ │   → Instagram Video/Reel/Post
+┃ │ 
+┃ │ *.tt* <link>
+┃ │   → TikTok (No Watermark)
+┃ │ 
+┃ │ *.mediafire* / *.mf* <link>
+┃ │   → MediaFire Files
+┃ │ 
+┃ │ *.mp3* / *.download* <link>
+┃ │   → YouTube to MP3
+┃ │ 
+┃ │ *.flac* / *.tidal* <judul>
+┃ │   → Hi-Res FLAC Audio
+┃ │
+┃ ╭━━━━━━━━━━━━━━━━━━━━╮
+┃ ┃  📤 *M I R R O R / F I L E*  ┃
+┃ ╰━━━━━━━━━━━━━━━━━━━━╯
+┃ │ *.mirror* <reply file>
+┃ │   → Mirror file ke chat
+┃ │ 
+┃ │ *.gf* / *.gofile* <link>
+┃ │   → Download dari Gofile
+┃ │ 
+┃ │ *.pd* / *.pixeldrain* <link>
+┃ │   → Download dari Pixeldrain
+┃ │ 
+┃ │ *.bh* / *.buzzheavier* <link>
+┃ │   → Download dari Buzzheavier
 ┃
 ┃ ╭━━━━━━━━━━━━━━━━━━━━╮
 ┃ ┃  🎨 *M E D I A & T O O L S*  ┃
 ┃ ╰━━━━━━━━━━━━━━━━━━━━╯
-┃ │ 7.  *.sticker* / *.s*
-┃ │    ↳ Gambar/Video ➡️ Sticker
-┃ │ 8.  *.brat* <teks>
-┃ │    ↳ Buat Sticker Teks Brat
-┃ │ 9.  *.upscale*
-┃ │    ↳ Perjernih Foto/HD (reply image)
-┃ │ 10. *.removebg*
-┃ │    ↳ Hapus Background Foto
+┃ │ *.sticker* / *.s* <reply>
+┃ │   → Gambar/Video ➡️ Sticker
+┃ │ 
+┃ │ *.brat* <teks>
+┃ │   → Buat Sticker Teks Brat
+┃ │ 
+┃ │ *.upscale* / *.hd* <reply>
+┃ │   → Perjernih/HD Foto
+┃ │ 
+┃ │ *.removebg* / *.rmbg* <reply>
+┃ │   → Hapus Background
 ┃
 ┃ ╭━━━━━━━━━━━━━━━━━━━━╮
 ┃ ┃  ⛩️ *A N I M E & M A N G A*  ┃
 ┃ ╰━━━━━━━━━━━━━━━━━━━━╯
-┃ │ 11. *.komiku* <judul>
-┃ │    ↳ Cari/Baca Manga Indo
-┃ │ 12. *.animexin* <judul>
-┃ │    ↳ Cari Anime Terbaru
-┃ │ 13. *.kusonime* <judul>
-┃ │    ↳ Download Anime Batch
-┃ │ 14. *.mal* <judul>
-┃ │    ↳ Info Detail MyAnimeList
+┃ │ *.komiku* <judul>
+┃ │   → Cari & Baca Manga Indo
+┃ │ 
+┃ │ *.animexin* / *.anime* <judul>
+┃ │   → Cari Anime Terbaru
+┃ │ 
+┃ │ *.kusonime* / *.kuso* <judul>
+┃ │   → Download Anime Batch
+┃ │ 
+┃ │ *.mal* <judul>
+┃ │   → Info MyAnimeList Detail
 ┃
 ┃ ╭━━━━━━━━━━━━━━━━━━━━╮
-┃ ┃  ⚙️ *S Y S T E M & O W N E R* ┃
+┃ ┃  ⚙️ *S Y S T E M & I N F O*  ┃
 ┃ ╰━━━━━━━━━━━━━━━━━━━━╯
-┃ │ 15. *.ping*
-┃ │    ↳ Cek Kecepatan Respon Bot
-┃ │ 16. *.neofetch*
-┃ │    ↳ Cek Info Spesifikasi VPS
-┃ │ 17. *.setpp*
-┃ │    ↳ Ganti Foto Profil Bot
-┃ │ 18. *.owner* / *.creator*
-┃ │    ↳ Info Pembuat Bot
-┃ ╭━━━━━━━━━━━━━━━━━━━━╮
-┃ ┃  📤 *M I R R O R   F I L E*  ┃  ← Tambahin kategori baru
-┃ ╰━━━━━━━━━━━━━━━━━━━━╯
-┃ │ 19. *.mirror* <reply file>
-┃ │    ↳ Upload file ke tmpfiles.org
-┃ │ 20. *.upload* / *.tmpfiles*
-┃ │    ↳ Alias mirror command
-┃
-┃ ╭━━━━━━━━━━━━━━━━━━━━╮
-┃ ┃  🎨 *M E D I A & T O O L S*  ┃  ← Atau taruh sini aja
-┃ ╰━━━━━━━━━━━━━━━━━━━━╯
-┃ │ ... fitur lain ...
-┃ │ 9.  *.mirror* <reply file>
-┃ │    ↳ Mirror file ke tmpfiles.org
-┃
+┃ │ *.ping*
+┃ │   → Cek Kecepatan Respon Bot
+┃ │ 
+┃ │ *.neofetch*
+┃ │   → Cek Info Spesifikasi VPS
+┃ │ 
+┃ │ *.setpp*
+┃ │   → Ganti Foto Profil Bot
+┃ │
 ┃ ╭───────────────────────╮
-┃ │  📊 *Total Fitur: 20*   │
+┃ │  📊 *Total Fitur: 56*   │
 ┃ ╰───────────────────────╯
 ┃
 ╰━━━━━━━━━━━━━━━━━━━━━━━━━━╯
