@@ -72,13 +72,13 @@ npm install axios cheerio form-data @whiskeysockets/baileys pino qrcode-terminal
 ```
 
 jika gagal jalankan
-'''
+```
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
 source ~/.bashrc
 nvm install 22
 nvm use 22
 
-'''
+```
 6. Install Bot nya
 ```
 npm install
